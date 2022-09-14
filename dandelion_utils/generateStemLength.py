@@ -11,9 +11,7 @@ def generateStemLength(stemMin: int, stemMax: int) -> int:
     # StemMin should be at minimum 1, but recommend setting it to 2
     if (stemMin is None or stemMin < 1):
         stemMin = 2
-
-    # This is set to a <= and not an < because there should be some randomness in the stem length
-    if (stemMax is None or stemMax <= stemMin):
+    if (stemMax is None or stemMax < stemMin):
         stemMax = min(stemMin + 3, 10)
 
     # Returns a random whole number between stemMin and stemMax

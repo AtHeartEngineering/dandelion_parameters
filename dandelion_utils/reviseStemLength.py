@@ -5,7 +5,9 @@ import math
 from random import random
 
 
-def reviseStemLength(stemLength: int, stemReductionMin: int, stemReductionMax: int) -> int:
+def reviseStemLength(stemLength: int, stemReductionMin: float, stemReductionMax: float) -> int:
+    if (0 > offset > 1):
+        raise Exception('Invalid reviseStemLength offset, must be between 0 and 1', offset)
     if (stemLength > 0):
         # Highly recommend stemReductionMin be 1, but it could be set to 0
         if (stemReductionMin is None or stemReductionMin < 0):
@@ -15,10 +17,10 @@ def reviseStemLength(stemLength: int, stemReductionMin: int, stemReductionMax: i
         if (stemReductionMax is None or stemReductionMax < stemReductionMin):
             stemReductionMax = stemReductionMin + 1
 
-        delta = math.floor(random() * (stemReductionMax - stemReductionMin + 1) + stemReductionMin)
+        delta = math.floor((random()+offset) * (stemReductionMax - stemReductionMin + 1) + stemReductionMin)
 
         newStemLength = stemLength - delta
-        print(f'REVISING STEM LENGTH: {stemLength} (stemlength) - {delta} (delta) = {newStemLength} (newStemLength)')
+        #print(f'{newStemLength} (newStem) = {stemLength} (oldStem) - {delta} (delta)')
 
         if (newStemLength < 0):
             newStemLength = 0
