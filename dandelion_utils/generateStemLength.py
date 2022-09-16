@@ -9,10 +9,11 @@ from random import random
 
 def generateStemLength(stemMin: int, stemMax: int) -> int:
     # StemMin should be at minimum 1, but recommend setting it to 2
-    if (stemMin is None or stemMin < 1):
-        stemMin = 2
-    if (stemMax is None or stemMax < stemMin):
-        stemMax = min(stemMin + 3, 10)
+    # if (stemMin is None or stemMin < 1):
+    #     stemMin = 2
+    # if (stemMax is None or stemMax < stemMin):
+    #     # stemMax = min(stemMin + 3, 10)
+    #     stemMax = stemMin + 1
 
     # Returns a random whole number between stemMin and stemMax
     return math.floor(random() * (stemMax - stemMin + 1) + stemMin)
